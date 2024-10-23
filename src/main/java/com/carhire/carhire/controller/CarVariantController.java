@@ -26,13 +26,22 @@ public class CarVariantController {
     public ResponseEntity<List<CarVariant>> getVariantByName(@RequestParam String name){
         return ResponseEntity.ok(service.getVariantByName(name));
     }
-//    List<CarVariant> getVariantByFuelType(String type);
-//    List<CarVariant> getVariantByCompany(String company);
-//    List<CarVariant> getVariantBySeatCapacity(Integer seats);
-//    List<CarVariant> getVariantByHasAc(Boolean hasAc)
     @GetMapping("/get/fuelType")
     public ResponseEntity<List<CarVariant>> getVariantByFuelType(@RequestParam String type){
         return ResponseEntity.ok(service.getVariantByFuelType(type));
     }
+    @GetMapping("/get/company")
+    public ResponseEntity<List<CarVariant>> getVariantByCompany(@RequestParam String company){
+        return ResponseEntity.ok(service.getVariantByCompany(company));
+    }
+    @GetMapping("/get/seats")
+    public ResponseEntity<List<CarVariant>> getVariantBySeatCapacity(@RequestParam  Integer seats){
+        return ResponseEntity.ok(service.getVariantBySeatCapacity(seats));
+    }
+    @GetMapping("/get/hasAc")
+    public  ResponseEntity<List<CarVariant>> getVariantByHasAc(@RequestParam Boolean ac){
+        return ResponseEntity.ok(service.getVariantByHasAc(ac));
+    }
+
 
 }
