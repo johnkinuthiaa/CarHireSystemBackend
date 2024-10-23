@@ -30,5 +30,9 @@ public class CarVariantController {
 //    List<CarVariant> getVariantByCompany(String company);
 //    List<CarVariant> getVariantBySeatCapacity(Integer seats);
 //    List<CarVariant> getVariantByHasAc(Boolean hasAc)
+    @GetMapping("/get/fuelType")
+    public ResponseEntity<List<CarVariant>> getVariantByFuelType(@RequestParam String type){
+        return ResponseEntity.ok(service.getVariantByFuelType(type));
+    }
 
 }
