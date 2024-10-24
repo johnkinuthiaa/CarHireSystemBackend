@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/variants")
+@RequestMapping("/api/v1/admin/variants")
 public class CarVariantController {
     private final CarVariantService service;
     public CarVariantController(CarVariantService service){
@@ -41,6 +41,14 @@ public class CarVariantController {
     @GetMapping("/get/hasAc")
     public  ResponseEntity<List<CarVariant>> getVariantByHasAc(@RequestParam Boolean ac){
         return ResponseEntity.ok(service.getVariantByHasAc(ac));
+    }
+    @DeleteMapping("delete/id")
+    public  void deleteCarVariantById(@RequestParam Long id){
+        service.deleteCarVariantById(id);
+    }
+    @DeleteMapping("delete/all")
+    public void deleteAllCarVariants(){
+        service.deleteAllCarVariants();
     }
 
 

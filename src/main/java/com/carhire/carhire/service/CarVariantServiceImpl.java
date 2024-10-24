@@ -66,4 +66,14 @@ public class CarVariantServiceImpl implements CarVariantService{
                 .filter(carVariant -> carVariant.getHasAc().equals(hasAc))
                 .collect(Collectors.toList());
     }
+    @Override
+    public  void deleteCarVariantById(Long id){
+        if(repository.findById(id).isPresent()){
+            repository.delete(repository.findById(id).orElseThrow());
+        }
+    }
+    @Override
+    public void deleteAllCarVariants(){
+        repository.deleteAll();
+    }
 }

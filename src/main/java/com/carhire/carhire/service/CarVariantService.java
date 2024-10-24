@@ -12,6 +12,8 @@ public interface CarVariantService {
     List<CarVariant> getVariantByCompany(String company);
     List<CarVariant> getVariantBySeatCapacity(Integer seats);
     List<CarVariant> getVariantByHasAc(Boolean hasAc);
+    void deleteCarVariantById(Long id);
+    void deleteAllCarVariants();
 
 
 }
