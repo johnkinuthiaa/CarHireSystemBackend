@@ -1,12 +1,12 @@
 package com.carhire.carhire.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class CarVariant {
@@ -24,6 +24,10 @@ public class CarVariant {
     private BigDecimal rentPerDay;
     private String imgUrl;
     private LocalDateTime createdOn;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "car_id")
+//    @JsonBackReference
+//    private Car carList;
 
     public CarVariant(){}
     public CarVariant(String variantName,
