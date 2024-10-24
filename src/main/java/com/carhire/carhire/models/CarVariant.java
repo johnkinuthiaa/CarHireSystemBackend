@@ -27,7 +27,7 @@ public class CarVariant {
 //    @ManyToOne(cascade = CascadeType.ALL)
 //    @JoinColumn(name = "car_id")
 //    @JsonBackReference
-//    private Car carList;
+//    private Car car;
 
     public CarVariant(){}
     public CarVariant(String variantName,

@@ -19,9 +19,9 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String BrandName;
+    private String brandName;
     private String brandLogo;
-//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "car", cascade = CascadeType.ALL)
+//    @OneToMany(fetch = FetchType.EAGER, mappedBy = "Car", cascade = CascadeType.ALL)
 //    @JsonManagedReference
-//    private List<CarVariant> carVariant;
+//    private List<CarVariant> carVariants;
 }

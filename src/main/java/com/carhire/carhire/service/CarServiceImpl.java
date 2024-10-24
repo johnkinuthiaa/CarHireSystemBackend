@@ -26,12 +26,10 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public void deleteCarByBrand(String name) {
-        Car c1 =repository.findCarByBrandName(name).orElse(null);
-        if(c1 ==null){
-            throw new RuntimeException("cannot find the given brand");
-        }else{
-            repository.delete(c1);
-        }
+        List<Car> cars= repository.findAll().stream()
+                .filter(car->car.getBrandName().equalsIgnoreCase(name.toLowerCase()))
+                .collect(Collectors.toList());
+        repository.deleteAll(cars);
     }
 
     @Override
