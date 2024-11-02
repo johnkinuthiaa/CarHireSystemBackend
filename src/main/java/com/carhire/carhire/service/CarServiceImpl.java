@@ -5,6 +5,7 @@ import com.carhire.carhire.repository.CarRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,7 +28,7 @@ public class CarServiceImpl implements CarService{
     @Override
     public void deleteCarByBrand(String name) {
         List<Car> cars= repository.findAll().stream()
-                .filter(car->car.getBrandName().equalsIgnoreCase(name.toLowerCase()))
+                .filter(car->car.getBrandName().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
         repository.deleteAll(cars);
     }

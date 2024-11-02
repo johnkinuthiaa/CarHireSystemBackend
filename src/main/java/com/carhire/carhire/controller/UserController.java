@@ -1,6 +1,7 @@
 package com.carhire.carhire.controller;
 
 import com.carhire.carhire.dto.UserReqRes;
+import com.carhire.carhire.models.User;
 import com.carhire.carhire.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,8 +14,9 @@ public class UserController {
     public UserController(UserService service) {
         this.service = service;
     }
-    @PostMapping("/register")
-    public ResponseEntity<UserReqRes> createNewUser(@RequestBody UserReqRes user){
-        return ResponseEntity.ok(service.createNewUser(user));
+
+    @PostMapping("register")
+    public User createNewUser(@RequestBody User userDetails){
+        return service.createUser(userDetails);
     }
 }

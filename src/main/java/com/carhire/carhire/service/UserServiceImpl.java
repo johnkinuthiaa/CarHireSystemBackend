@@ -4,12 +4,15 @@ import com.carhire.carhire.dto.UserReqRes;
 import com.carhire.carhire.models.User;
 import com.carhire.carhire.repository.UserRepository;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
 
     private final UserRepository repository;
+    private final PasswordEncoder passwordEncoder =new BCryptPasswordEncoder(12);
 
 
     public UserServiceImpl(UserRepository repository) {
@@ -17,27 +20,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserReqRes createNewUser(UserReqRes user) {
-        UserReqRes response =new UserReqRes();
-        try{
-            User newUser = new User();
-            if(repository.findById(user.getId()).isEmpty()){
-                newUser.setUsername(user.getUsername());
-                newUser.setId(user.getId());
-                newUser.setEmail(user.getEmail());
-                newUser.setPassword(user.getPassword());
-                repository.save(newUser);
-                response.setStatusCode(200);
-                response.setMessage("user Created Successfully");
-                response.setUser(newUser);
-
-            }
-
-        } catch (Exception e) {
-            response.setStatusCode(500);
-            response.setError(e.getMessage());
-            throw new RuntimeException(e);
-        }
-        return response;
+    public User createUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return repository.save(user);
     }
 }
